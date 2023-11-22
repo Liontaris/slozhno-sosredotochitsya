@@ -1,5 +1,323 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent-color: var(--deep-pink);
+    --background-color: var(--midnight);
+    --title-color: var(--fuchsia);
+    --header__description-color: var(--midnight);
+    --header__description-bgr-color: var(--deep-pink);
+    --cover-background: url("/images/cover-image-dark.png");
+    --section-header-color: var(--deep-pink); /* доп переменная для большей гибкости кода */
+    --article-header-color: var(--midnight);
+    --article-header-bgrColor: var(--deep-pink);
+    --article-text: var(--light-pink);
+    --link-decoration-color: var(--deep-pink);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --accent-color: var(--graphite);
+    --background-color: var(--midday);
+    --title-color: var(--day-pink);
+    --text-color: var(--graphite);
+    --header__description-color: var(--graphite);
+    --header__description-bgr-color: var(--hot-pink);
+    --cover-background: url("/images/cover-image-light.png");
+    --section-header-color: var(--graphite);
+    --article-header-color: var(--graphite);
+    --article-header-bgrColor: var(--hot-pink);
+    --article-text: var(--graphite);
+    --link-decoration-color: var(--hot-pink);
+  }
+}
+
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  background-color: var(--background-color);
+}
+
+.header,
+.footer {
+  width: 100%;
+  height: max(100vh, 41.75rem);
+  position: relative;
+}
+
+.header {
+  background: var(--cover-background) no-repeat center / cover;
+}
+
+.header__theme-menu-button_active {
+  pointer-events: none;
+}
+
+.decorated-zone::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: min(2.67vw, 1.25rem);
+  bottom: min(2.67vw, 1.25rem);
+  border-left: var(--decorated-zone__borders) var(--accent-color);
+  border-bottom: var(--decorated-zone__borders) var(--accent-color);
+}
+
+.decorated-zone::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: min(2.67vw, 1.25rem);
+  right: min(2.67vw, 1.25rem);
+  border-right: var(--decorated-zone__borders) var(--accent-color);
+  border-top: var(--decorated-zone__borders) var(--accent-color);
+}
+
+.decoration__rec-sign::after {
+  content: url(/images/rec.svg);
+  position: absolute;
+  top: min(2.67vw, 1.25rem);
+  right: min(3.47vw, 1.44rem);
+}
+
+@media (prefers-color-scheme: light) {
+  .theme_auto .decoration__rec-sign::after,
+  .theme_light .decoration__rec-sign::after {
+    visibility: hidden;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme_light .decoration__rec-sign::after {
+    visibility: hidden;
+  }
+}
+
+.header__theme-menu {
+  padding-block-start: min(20vw, 12rem);
+  padding-inline-end: min(2.67vw, 1.25rem);
+}
+
+.header__theme-menu-list {
+  list-style: none;
+  display: flex;
+  gap: 13px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.text {
+  font-family: var(--main-font);
+  font-size: 1.125rem;
+  line-height: 23.4px;
+}
+
+.header__theme-menu-button {
+  cursor: pointer;
+  text-align: center;
+  text-transform: lowercase;
+  font-weight: normal;
+  background-color: transparent;
+  border: none;
+  padding: 0 13px;
+  color: var(--accent-color);
+}
+
+.header__theme-menu-button_active,
+.header__theme-menu-button:hover {
+  outline: 1px solid var(--accent-color);
+}
+
+.header__theme-menu-button:focus-visible {
+  outline: 0;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.header__content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8.23vh;
+  padding-block-start: min(18.73vw, 10.91rem);
+  padding-inline-start: max(2.67vw, 0.63rem);
+}
+
+.title-colors {
+  color: var(--title-color);
+  text-shadow: 4px 4px 0px var(--deep-pink);
+}
+
+.header__page-heading {
+  font-family: var(--main-font);
+  font-size: clamp(7.25rem, 7.011rem + 1.02vw, 7.5rem);
+  font-weight: 700;
+  line-height: 82.5%;
+  justify-self: center;
+}
+
+.header__description {
+  color: var(--header__description-color);
+  background-color: var(--header__description-bgr-color);
+  font-weight: 700;
+  margin-right: clamp(0.625rem, 0.029rem + 2.545vw, 1.25rem);
+  width: clamp(22.188rem, 21.649rem + 2.296vw, 22.75rem);
+  align-self: flex-end;
+}
+
+@media (min-width: 768px) {
+  .header__content-wrapper {
+    gap: 16vh;
+    padding-block-start: min(22.73vw, 10.91rem);
+    padding-inline-start: 0;
+  }
+  
+  .header__description {
+    margin-right: 20px;
+    width: clamp(22.75rem, -1.156rem + 49.804vw, 30.688rem);
+  }
+}
+/* Общие стили для секции. Отступы, в основном. */
+.section { 
+  display: grid;
+  row-gap: 20px;
+  column-gap: 11px;
+  margin-block: min(10.67vw, 3.75rem) min(13.33vw, 5rem);
+  margin-inline: min(2.67vw, 1.25rem);
+}
+
+.section.section__gallery {
+  gap: min(2.67vw, 1.25rem);
+}
+
+.section h2 {
+  color: var(--section-header-color);
+}
+
+.section h3,
+.section h4 {
+  color: var(--article-header-color);
+  background-color: var(--article-header-bgrColor);
+}
+
+.section h4 {
+  font-weight: 400;
+}
+
+.section p {
+  color: var(--article-text);
+  padding-block-start: 0.63rem;
+}
+
+.section__gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer__text {
+  font-family: var(--main-font);
+  font-size: clamp(7.25rem, 30.93vw, 7.5rem);
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+
+  .header__page-heading {
+    font-size: clamp(7.5rem, 0.535rem + 14.51vw, 9.813rem);
+  }
+
+  .header__theme-menu {
+    padding-block-start: 25vw;
+  }
+
+  .section__reason,
+  .section__solution {
+    grid-template-columns: 1fr 2fr;
+    column-gap: 20px;
+  }
+
+  .section__reason article {
+    grid-column: 2;
+  }
+
+   .section__cause,
+   .section__gallery {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+  }
+
+  .section__cause article {
+    grid-column: 1 / span 3;
+  }
+
+  .section__solution h2 {
+    grid-row: 1 / span 6;
+  }
+
+  .section__gallery {
+    grid-template-rows: repeat(4, auto);
+  }
+
+  .section__gallery h3 {
+    grid-column: 1 / span 3;
+    align-self: start;
+  }
+
+  .section__gallery img:first-of-type,
+  .section__gallery img:last-of-type {
+    grid-column: span 2;
+  }
+
+  .section__gallery img:nth-of-type(2),
+  .section__gallery img:last-of-type  {
+    grid-row: span 2;
+  }
+
+  .section__gallery img:nth-of-type(3) {
+    grid-row: span 3;
+  }
+
+  .footer__text {
+    font-size: clamp(7.5rem, 15.63vw, 9.813rem);
+
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .header__page-heading {
+    font-size: max(15.33vw, 9.81rem);
+  }
+
+  .header__content-wrapper {
+    padding-top: 17.2rem;
+    gap: 14.84vh;
+  }
+  .header__theme-menu {
+    padding-top: 1.34rem;
+    padding-right: 0;
+  }
+
+  .header__theme-menu-list {
+    flex-direction: row;
+    justify-content: center;
+    gap: 11px;
+  }
+  .section__cause article {
+    grid-row: 2;
+    grid-column: auto;
+  }
+
+  .footer__text {
+    font-size: max(15.63vw, 9.813rem);
+  }    
 }
