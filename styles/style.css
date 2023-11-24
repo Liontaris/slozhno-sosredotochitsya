@@ -1,38 +1,5 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --accent-color: var(--deep-pink);
-    --background-color: var(--midnight);
-    --title-color: var(--fuchsia);
-    --header__description-color: var(--midnight);
-    --header__description-bgr-color: var(--deep-pink);
-    --cover-background: url("/images/cover-image-dark.png");
-    --section-header-color: var(--deep-pink); /* доп переменная для большей гибкости кода */
-    --article-header-color: var(--midnight);
-    --article-header-bgrColor: var(--deep-pink);
-    --article-text: var(--light-pink);
-    --link-decoration-color: var(--deep-pink);
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --accent-color: var(--graphite);
-    --background-color: var(--midday);
-    --title-color: var(--day-pink);
-    --text-color: var(--graphite);
-    --header__description-color: var(--graphite);
-    --header__description-bgr-color: var(--hot-pink);
-    --cover-background: url("/images/cover-image-light.png");
-    --section-header-color: var(--graphite);
-    --article-header-color: var(--graphite);
-    --article-header-bgrColor: var(--hot-pink);
-    --article-text: var(--graphite);
-    --link-decoration-color: var(--hot-pink);
-  }
-}
-
 .page {
   /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
   background-color: var(--background-color);
@@ -78,27 +45,14 @@
 }
 
 .decoration__rec-sign::after {
-  content: url(/images/rec.svg);
+  content: url(../images/rec.svg);
   position: absolute;
   top: min(2.67vw, 1.25rem);
   right: min(3.47vw, 1.44rem);
 }
 
-@media (prefers-color-scheme: light) {
-  .theme_auto .decoration__rec-sign::after,
-  .theme_light .decoration__rec-sign::after {
-    visibility: hidden;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .theme_light .decoration__rec-sign::after {
-    visibility: hidden;
-  }
-}
-
 .header__theme-menu {
-  padding-block-start: min(20vw, 12rem);
+  padding-block-start: min(11.3vh, 12rem);
   padding-inline-end: min(2.67vw, 1.25rem);
 }
 
@@ -127,9 +81,12 @@
   color: var(--accent-color);
 }
 
-.header__theme-menu-button_active,
-.header__theme-menu-button:hover {
+.header__theme-menu-button_active {
   outline: 1px solid var(--accent-color);
+}
+
+.header__theme-menu-button:hover {
+  outline: 1px solid var(--button-hover-color);
 }
 
 .header__theme-menu-button:focus-visible {
@@ -140,8 +97,8 @@
 .header__content-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 8.23vh;
-  padding-block-start: min(18.73vw, 10.91rem);
+  gap: min(8.23vh, 10rem);
+  padding-block-start: min(10.1vh, 10.91rem);
   padding-inline-start: max(2.67vw, 0.63rem);
 }
 
@@ -163,22 +120,10 @@
   background-color: var(--header__description-bgr-color);
   font-weight: 700;
   margin-right: clamp(0.625rem, 0.029rem + 2.545vw, 1.25rem);
-  width: clamp(22.188rem, 21.649rem + 2.296vw, 22.75rem);
+  inline-size: min(95vw, 22.75rem);
   align-self: flex-end;
 }
 
-@media (min-width: 768px) {
-  .header__content-wrapper {
-    gap: 16vh;
-    padding-block-start: min(22.73vw, 10.91rem);
-    padding-inline-start: 0;
-  }
-  
-  .header__description {
-    margin-right: 20px;
-    width: clamp(22.75rem, -1.156rem + 49.804vw, 30.688rem);
-  }
-}
 /* Общие стили для секции. Отступы, в основном. */
 .section { 
   display: grid;
@@ -188,30 +133,30 @@
   margin-inline: min(2.67vw, 1.25rem);
 }
 
-.section.section__gallery {
+.section.section__content-gallery {
   gap: min(2.67vw, 1.25rem);
 }
 
-.section h2 {
+.section__header {
   color: var(--section-header-color);
 }
 
-.section h3,
-.section h4 {
+.section .section__article-header,
+.section .section__article-header-secondary {
   color: var(--article-header-color);
   background-color: var(--article-header-bgrColor);
 }
 
-.section h4 {
+.section__article-header-secondary {
   font-weight: 400;
 }
 
-.section p {
+.section__article-text {
   color: var(--article-text);
   padding-block-start: 0.63rem;
 }
 
-.section__gallery img {
+.section__content-gallery-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -231,58 +176,73 @@
 
 @media (min-width: 768px) {
 
+  .header {
+    height: max(100vh, 45rem);
+  }
+
+  .header__content-wrapper {
+    gap: min(16vh, 11rem);
+    padding-block-start: min(17vh, 10.91rem);
+    padding-inline-start: 0;
+  }
+  
+  .header__description {
+    margin-right: 20px;
+    inline-size: min(47.4vw, 30.7rem);
+  }
+
   .header__page-heading {
     font-size: clamp(7.5rem, 0.535rem + 14.51vw, 9.813rem);
   }
 
   .header__theme-menu {
-    padding-block-start: 25vw;
+    padding-block-start: 18.71vh;
   }
 
-  .section__reason,
-  .section__solution {
+  .section__content-reason,
+  .section__content-solution {
     grid-template-columns: 1fr 2fr;
     column-gap: 20px;
   }
 
-  .section__reason article {
+  .section__content-reason article {
     grid-column: 2;
   }
 
-   .section__cause,
-   .section__gallery {
+   .section__content-cause,
+   .section__content-gallery {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
   }
 
-  .section__cause article {
+  .section__content-cause article {
     grid-column: 1 / span 3;
   }
 
-  .section__solution h2 {
+  .section__content-solution .section__header {
     grid-row: 1 / span 6;
   }
 
-  .section__gallery {
+  .section__content-gallery {
     grid-template-rows: repeat(4, auto);
   }
 
-  .section__gallery h3 {
+  .section__content-gallery .section__article-header {
     grid-column: 1 / span 3;
     align-self: start;
   }
 
-  .section__gallery img:first-of-type,
-  .section__gallery img:last-of-type {
+  .section__content-gallery .section__content-gallery-image:first-of-type,
+  .section__content-gallery .section__content-gallery-image:last-of-type {
     grid-column: span 2;
   }
 
-  .section__gallery img:nth-of-type(2),
-  .section__gallery img:last-of-type  {
+  .section__content-gallery .section__content-gallery-image:nth-of-type(2),
+  .section__content-gallery .section__content-gallery-image:last-of-type  {
     grid-row: span 2;
   }
 
-  .section__gallery img:nth-of-type(3) {
+  .section__content-gallery .section__content-gallery-image:nth-of-type(3) {
     grid-row: span 3;
   }
 
@@ -302,6 +262,11 @@
     padding-top: 17.2rem;
     gap: 14.84vh;
   }
+
+  .header__description {
+    inline-size: 47.9vw;
+  }
+
   .header__theme-menu {
     padding-top: 1.34rem;
     padding-right: 0;
@@ -312,7 +277,7 @@
     justify-content: center;
     gap: 11px;
   }
-  .section__cause article {
+  .section__content-cause article {
     grid-row: 2;
     grid-column: auto;
   }

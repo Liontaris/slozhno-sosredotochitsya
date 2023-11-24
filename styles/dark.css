@@ -14,14 +14,36 @@
     чем стили в медиазапросе предпочтений пользователя
   */
   --accent-color: var(--deep-pink);
+  --button-hover-color: var(--deep-pink-shade);
   --background-color: var(--midnight);
   --title-color: var(--fuchsia);
   --header__description-color: var(--midnight);
   --header__description-bgr-color: var(--deep-pink);
-  --cover-background: url("/images/cover-image-dark.png");
+  --cover-background: url("../images/cover-image-dark.png");
   --section-header-color: var(--deep-pink);
   --article-header-color: var(--midnight);
   --article-header-bgrColor: var(--deep-pink);
   --article-text: var(--light-pink);
   --link-decoration-color: var(--deep-pink);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent-color: var(--deep-pink);
+    --button-hover-color: var(--deep-pink-shade);
+    --background-color: var(--midnight);
+    --title-color: var(--fuchsia);
+    --header__description-color: var(--midnight);
+    --header__description-bgr-color: var(--deep-pink);
+    --cover-background: url("../images/cover-image-dark.png");
+    --section-header-color: var(--deep-pink); /* доп переменная для большей гибкости кода */
+    --article-header-color: var(--midnight);
+    --article-header-bgrColor: var(--deep-pink);
+    --article-text: var(--light-pink);
+    --link-decoration-color: var(--deep-pink);
+  }
+
+  .theme_light .decoration__rec-sign::after {
+    visibility: hidden;
+  }
 }

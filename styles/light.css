@@ -14,15 +14,39 @@
     чем стили в медиазапросе предпочтений пользователя
   */
   --accent-color: var(--graphite);
+  --button-hover-color: var(--graphite-shade);
   --background-color: var(--midday);
   --title-color: var(--day-pink);
   --text-color: var(--graphite);
   --header__description-color: var(--graphite);
   --header__description-bgr-color: var(--hot-pink);
-  --cover-background: url("/images/cover-image-light.png");
+  --cover-background: url("../images/cover-image-light.png");
   --section-header-color: var(--graphite);
   --article-header-color: var(--graphite);
   --article-header-bgrColor: var(--hot-pink);
   --article-text: var(--graphite);
   --link-decoration-color: var(--hot-pink);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --accent-color: var(--graphite);
+    --button-hover-color: var(--graphite-shade);
+    --background-color: var(--midday);
+    --title-color: var(--day-pink);
+    --text-color: var(--graphite);
+    --header__description-color: var(--graphite);
+    --header__description-bgr-color: var(--hot-pink);
+    --cover-background: url("../images/cover-image-light.png");
+    --section-header-color: var(--graphite);
+    --article-header-color: var(--graphite);
+    --article-header-bgrColor: var(--hot-pink);
+    --article-text: var(--graphite);
+    --link-decoration-color: var(--hot-pink);
+  }
+
+  .theme_auto .decoration__rec-sign::after,
+  .theme_light .decoration__rec-sign::after {
+    visibility: hidden;
+  }
 }

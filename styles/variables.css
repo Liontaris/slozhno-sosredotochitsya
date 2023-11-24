@@ -5,13 +5,15 @@
 :root {
   --fuchsia: #db00ff;
   --deep-pink: #ff0070;
+  --deep-pink-shade: rgba(255, 0, 112, 0.40); 
   --graphite: #353430;
+  --graphite-shade: rgba(50, 49, 45, 0.40);
   --midnight: #000028;
   --midday: #FFF1F7;
   --day-pink: #ffc2e6;
   --hot-pink: #ff8dcb;
   --light-pink: #f1b2ce;
-  --main-font: 'IBM Plex mono', sans-serif;
+  --main-font: 'IBM Plex mono', Arial, sans-serif;
   --decorated-zone__borders: 1px solid;
   --decorated_zone__clamp: 0.625rem, 0.029rem + 2.545vw, 1.25rem;
 }
