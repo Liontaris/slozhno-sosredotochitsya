@@ -135,6 +135,7 @@
 
 .section.section__content-gallery {
   gap: min(2.67vw, 1.25rem);
+  margin-block-end: min(10.67vw, 3.75rem);
 }
 
 .section__header {
